@@ -50,4 +50,25 @@ router.get('/books/:id',async (req, res) =>{
   }
 })
 
+
+//update a book in database
+router.put('/books/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!req.body.title || !req.body.author || !req.body.publishedYear) {
+      return res.status(400).json({ message: "Send all required fields: title, author, publishedYear" });
+    }
+    const result = await Book.findByIdAndUpdate(id, req.body);
+    if (!result) {
+      return res.status(404).json({ message: 'Book not found' });
+    }
+    return res.status(200).json({ message: 'Book updated successfully' });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: error.message });
+  }
+});
+
+
+
 module.exports = router;
