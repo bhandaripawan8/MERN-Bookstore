@@ -9,7 +9,11 @@ const bookRoutes = require('./Routes/Book.Routes.js')
 const app = express()
 
 // middleware
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000',
+  method: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-type'],
+}));
 app.use(express.json());
 
 // mongodb connection
@@ -24,7 +28,7 @@ app.use(express.json());
   })
 
 // Routes
-app.use('/api', bookRoutes);
+app.use('/api/books', bookRoutes);
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
