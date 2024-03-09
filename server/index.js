@@ -2,7 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 dotenv.config();
-const port = process.env.PORT || 4000
+const port = process.env.PORT || 3000
 const mongoose = require('mongoose');
 const bookRoutes = require('./Routes/Book.Routes.js')
 
@@ -11,7 +11,6 @@ const app = express()
 // middleware
 app.use(cors());
 app.use(express.json());
-
 
 // mongodb connection
   mongoose.connect(process.env.MONGOURI)
