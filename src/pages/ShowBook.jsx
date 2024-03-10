@@ -53,9 +53,7 @@ const ShowBook = () => {
               <span className='text-xl mr-4 text-gray-500'>Last Updated time</span>
               <span>{new Date(book.updatedAt).toLocaleString()}</span>
             </div>
-
             </div>
-
         )}
     </div>
   )
